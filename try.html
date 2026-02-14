@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Valentine</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #fbeff5, #ffe4ec);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #b30059;
+      margin: 0;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      transition: transform 0.4s;
+    }
+
+    .card:hover { transform: translateY(-8px); }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: #e60073;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover { background: #b30059; }
+
+    .hidden { display: none; }
+
+    .love-message {
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 20px;
+      animation: fade 1s ease forwards;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      color: #ff4d88;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* ❤️ GALLERY CSS */
+    .gallery-section {
+      padding: 60px 20px;
+      background: #fff0f6;
+      text-align: center;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      color: #b30059;
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: 0.4s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Happy Valentine's Day ❤️</h1>
+  <p class="subtitle">For the most special person in my life</p>
+</header>
+
+<div class="section">
+
+  <div class="card">
+    <h2>Click to Reveal My Heart 💌</h2>
+    <button onclick="showMessage()">Open My Heart</button>
+    <p id="msg" class="love-message hidden">
+      My love, you are the most beautiful part of my life. Even if we are far away, your love is always close to my heart. I promise to love you, support you, and stand with you forever. ❤️
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Our Love Story</h2>
+    <p>
+      Every moment with you is special. From the first day we met to every memory we are creating, my heart keeps falling for you again and again.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Do You Love Me? 😊</h2>
+    <button onclick="yesLove()">Yes</button>
+    <button onclick="noLove()">No</button>
+    <p id="answer" class="love-message"></p>
+  </div>
+
+</div>
+
+<!-- ❤️ IMAGE GALLERY -->
+<section class="gallery-section">
+  <h2 class="gallery-title">Our Beautiful Memories 📸</h2>
+
+  <div class="gallery">
+    <!-- Replace with your images -->
+    <img src="/IMG-20241206-WA0031.jpg" alt="memory">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="memory">
+    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659" alt="memory">
+    <img src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1" alt="memory">
+    <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92" alt="memory">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="memory">
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ just for you
+</footer>
+
+<script>
+  function showMessage() {
+    document.getElementById("msg").classList.remove("hidden");
+  }
+
+  function yesLove() {
+    document.getElementById("answer").innerText = "I knew it! You are my forever. ❤️";
+  }
+
+  function noLove() {
+    document.getElementById("answer").innerText = "Haha, you still love me. You have no choice 😍";
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
